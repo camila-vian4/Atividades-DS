@@ -2,23 +2,60 @@ package com.example.encapsulamento;
 
 public class Livro {
 
-    // ATRIBUTOS DA CLASSE
-    private String nome;
-    private double preco;
+    private String titulo;
+    private String autor;
+    private int isbn;
+    private int numPaginas;
+    private Double preco;
 
-    // MÉTODOS DE ACESSO
-    public String getNome() {
-        return nome;
+    public Livro(String titulo, String autor, int isbn, int numPaginas, Double preco) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.isbn = isbn;
+        this.numPaginas = numPaginas;
+        this.preco = preco;
+
     }
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getTitulo() {
+        return titulo;
     }
-    public double getPreco() {
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    public String getAutor() {
+        return autor;
+    }
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+    public int getIsbn() {
+        return isbn;
+    }
+    public void setIsbn(int isbn) {
+        this.isbn = isbn;
+    }
+    public int getNumPaginas() {
+        return numPaginas;
+    }
+    public void setNumPaginas(int numPaginas) {
+        this.numPaginas = numPaginas;
+    }
+    public Double getPreco() {
         return preco;
     }
-    public void setPreco(double preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 
-
 }
+
+
+
+
+
+
+
+
+
+
+
