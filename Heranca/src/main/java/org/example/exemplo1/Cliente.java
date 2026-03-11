@@ -10,4 +10,29 @@ public class Cliente extends Pessoa {
         this.formaDePagamento = formaDePagamento;
     }
 
+    public String getDataCompra() {
+        return dataCompra;
+    }
+
+    public void setDataCompra(String dataCompra) {
+        this.dataCompra = dataCompra;
+    }
+
+    public String getFormaDePagamento() {
+        return formaDePagamento;
+    }
+
+    public void setFormaDePagamento(String formaDePagamento) {
+        this.formaDePagamento = formaDePagamento;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "dataCompra='" + dataCompra + '\'' +
+                ", formaDePagamento='" + formaDePagamento + '\'' +
+                ", nome='" + nome + '\'' +
+                ", idade=" + idade +
+                '}';
+    }
 }
