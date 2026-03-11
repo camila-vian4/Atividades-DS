@@ -1,4 +1,4 @@
-package atividade3;
+package org.example.atividade3;
 
 public class Fisica extends Pessoa {
 

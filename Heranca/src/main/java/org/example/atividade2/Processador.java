@@ -1,4 +1,4 @@
-package atividade2;
+package org.example.atividade2;
 
 public class Processador extends Produto {
     private String frequencia;

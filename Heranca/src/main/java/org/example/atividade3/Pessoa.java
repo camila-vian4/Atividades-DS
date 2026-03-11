@@ -1,4 +1,4 @@
-package atividade3;
+package org.example.atividade3;
 
 public abstract class Pessoa {
     protected String nome;

@@ -1,13 +1,11 @@
-package atividade2;
+package org.example.atividade2;
 
-public class DispositivoDeArmazenamento extends Produto {
+public class Memoria extends Produto {
     private String capacidadeArmazenamento;
-    private String tipoConexao;
 
-    public DispositivoDeArmazenamento(String marca, String modelo, String capacidadeArmazenamento, String tipoConexao) {
+    public Memoria(String marca, String modelo, String capacidadeArmazenamento) {
         super(marca, modelo);
         this.capacidadeArmazenamento = capacidadeArmazenamento;
-        this.tipoConexao = tipoConexao;
     }
 
     public String getCapacidadeArmazenamento() {
@@ -18,19 +16,10 @@ public class DispositivoDeArmazenamento extends Produto {
         this.capacidadeArmazenamento = capacidadeArmazenamento;
     }
 
-    public String getTipoConexao() {
-        return tipoConexao;
-    }
-
-    public void setTipoConexao(String tipoConexao) {
-        this.tipoConexao = tipoConexao;
-    }
-
     @Override
     public String toString() {
-        return "DispositivoDeArmazenamento{" +
+        return "Memoria{" +
                 "capacidadeArmazenamento='" + capacidadeArmazenamento + '\'' +
-                ", tipoConexao='" + tipoConexao + '\'' +
                 ", marca='" + marca + '\'' +
                 ", modelo='" + modelo + '\'' +
                 '}';
