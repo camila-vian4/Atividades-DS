@@ -20,7 +20,7 @@ public class PersonagemController {
     private PersonagemService service;
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> salvar(@Valid @RequestBody PersonagemRequestDTO personagemDTO){
+    public ResponseEntity<Map<String, Object>> cadastrar(@Valid @RequestBody PersonagemRequestDTO personagemDTO){
         service.cadastrarPersonagem(personagemDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("mensagem", "Personagem cadastrado com sucesso! ✅"));
     }
@@ -30,5 +30,20 @@ public class PersonagemController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(service.listarTodos());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> atualizarPersonagem(@PathVariable Long id,
+                                                                    @RequestBody PersonagemRequestDTO personagemDTO) {
+        service.atualizarPersonagem(id, personagemDTO);
+
+        return ResponseEntity.status(HttpStatus.OK).body(Map.of("mensagem", "Personagem atualizado com sucesso! ✅"));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> deletarPersonagem(@PathVariable Long id){
+        service.deletarPersonagem(id);
+
+        return ResponseEntity.status(HttpStatus.OK).body(Map.of("mensagem", "Personagem deletado com sucesso! ✅🗑️"));
     }
 }

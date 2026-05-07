@@ -28,7 +28,24 @@ public class PersonagemService {
             throw new RuntimeException("Personagem já cadastrado! ❌");
         }
 
+        PersonagemModel personagem = new PersonagemModel();
+        personagem.setNome(personagemDTO.getNome());
+        personagem.setIdade(personagemDTO.getIdade());
+        personagem.setHabilidade(personagemDTO.getHabilidade());
+        personagem.setPersonalidade(personagemDTO.getPersonalidade());
+
+        return repository.save(personagem);
+    }
+
+    public PersonagemModel atualizarPersonagem(Long id, PersonagemRequestDTO personagemDTO){
+
+        if (!repository.existsById(id)){
+            throw new IllegalArgumentException("Personagem não encontrado! 🔍");
+        }
+
         PersonagemModel novoPersonagem = new PersonagemModel();
+        novoPersonagem.setId(id);
+
         novoPersonagem.setNome(personagemDTO.getNome());
         novoPersonagem.setIdade(personagemDTO.getIdade());
         novoPersonagem.setHabilidade(personagemDTO.getHabilidade());
@@ -36,4 +53,12 @@ public class PersonagemService {
 
         return repository.save(novoPersonagem);
     }
+
+    public void deletarPersonagem(Long id){
+        if (!repository.existsById(id)){
+            throw new IllegalArgumentException("Personagem não encontrado! 🔍");
+        }
+        repository.deleteById(id);
+    }
 }
+
