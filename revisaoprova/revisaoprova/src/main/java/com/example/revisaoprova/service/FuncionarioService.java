@@ -26,7 +26,7 @@ public class FuncionarioService {
 
         FuncionarioModel funcionario =  new FuncionarioModel();
         funcionario.setNome(funcionarioDTO.getNome());
-        funcionario.setMatricula(funcionarioDTO.getNome());
+        funcionario.setMatricula(funcionarioDTO.getMatricula());
         funcionario.setDataNascimento(funcionarioDTO.getDataNascimento());
         funcionario.setSalario(funcionarioDTO.getSalario());
         funcionario.setEmail(funcionarioDTO.getEmail());
