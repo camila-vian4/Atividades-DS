@@ -1,0 +1,11 @@
+.footer {
+    background-color: #0556a1;
+    margin-top: auto;
+    color: aliceblue;
+    font-family: Arial;
+    padding: 20px;
+}
+
+.footer img {
+    max-width: 20%;
+}

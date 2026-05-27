@@ -1,0 +1,10 @@
+.header {
+    background-color: #0556a1;
+    top: auto;
+    padding: 10px;
+}
+
+.header h1 {
+    color: aliceblue;
+    font-family: Arial;
+}
