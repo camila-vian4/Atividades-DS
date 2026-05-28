@@ -1,0 +1,70 @@
+/* Container principal do cabeçalho */
+.naesquina-header {
+  background-color: #ffffff; /* Fundo branco fixo para destacar a logo */
+  border-bottom: 1px solid #eaeaea; /* Linha divisória suave */
+  width: 100%;
+  position: sticky; /* Mantém o header fixo no topo ao rolar a página */
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Limitador de largura interna */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px; /* Reduzido levemente para equilibrar com a logo de 90px */
+  display: flex;
+  justify-content: space-between; /* Separa o bloco da esquerda (logo+menu) das ações da direita */
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* GARANTE QUE A LOGO E O MENU FIQUEM EXATAMENTE LADO A LADO */
+.header-left-side {
+  display: flex;
+  align-items: center; /* Alinha verticalmente a logo e os textos do menu */
+  gap: 40px; /* Espaço horizontal entre a logo e o início do menu */
+}
+
+/* Bloco da Logo */
+.header-brand a {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo-img {
+  max-height: 90px; /* Mantido os seus 90px */
+  width: auto;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.header-brand a:hover .header-logo-img {
+  transform: scale(1.02);
+}
+
+/* Menu de Navegação Horizontal à esquerda, ao lado da logo */
+.header-nav ul {
+  display: flex;
+  flex-direction: row; /* Força os links a ficarem em linha, nunca um embaixo do outro */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 30px; /* Espaço entre cada link do menu */
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #666666;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap; /* Impede que o texto quebre em duas linhas */
+  transition: color 0.2s ease;
+}
+
+.header-nav a:hover,
+.header-nav a.active {
+  color: #d9363
+}
