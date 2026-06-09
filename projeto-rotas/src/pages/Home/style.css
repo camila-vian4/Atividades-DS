@@ -1,0 +1,173 @@
+/* ==========================================================================
+   HOME / HERO SECTION (LAYOUT ASSIMÉTRICO & MAIS COR)
+   ========================================================================== */
+
+.page-home {
+  /* Layout: Alinhado à esquerda */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  
+  min-height: 100vh;
+  padding: 8rem 1.5rem 4rem;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  max-width: 1440px;
+  margin: 0 auto;
+  
+  /* Textura Premium: Padrão sutil de pontilhados no fundo para quebrar o vazio */
+  background-image: radial-gradient(rgba(15, 23, 42, 0.05) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+}
+
+/* ==========================================================================
+   AMBIENT GLOWS: CORES VIVAS E ENVOLVENTES
+   ========================================================================== */
+.page-home::before,
+.page-home::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+  animation: floatOrbs 15s ease-in-out infinite alternate;
+}
+
+/* Orbe 1: Ciano e Azul Vivo (Lado Direito - Topo) */
+.page-home::before {
+  top: 5%;
+  right: -5%;
+  width: 60vw;
+  height: 60vw;
+  max-width: 800px;
+  max-height: 800px;
+  background: radial-gradient(circle, rgba(6, 181, 212, 0.247) 0%, rgba(59, 130, 246, 0.1) 70%);
+  filter: blur(90px);
+}
+
+/* Orbe 2: Indigo e Azul Profundo (Lado Esquerdo - Base) */
+.page-home::after {
+  bottom: -10%;
+  left: -5%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 600px;
+  max-height: 600px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(29, 78, 216, 0.1) 70%);
+  filter: blur(100px);
+  animation-delay: -7s;
+}
+
+/* ==========================================================================
+   TIPOGRAFIA: TÍTULO HERO (Sólido, Estático e Sóbrio)
+   ========================================================================== */
+.page-home h1 {
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  margin: 0 0 2rem 0;
+  width: 100%;
+  
+  /* Cor sólida corporativa (Sem efeitos ou degradês) */
+  color: var(--text-primary);
+
+  /* Apenas Animação de Entrada */
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: slideRightReveal 0.8s var(--ease-smooth) forwards;
+}
+
+@media (min-width: 1024px) {
+  .page-home h1 {
+    white-space: nowrap; 
+  }
+}
+
+/* ==========================================================================
+   CONTEÚDO: GLASSMORPHISM CARD (Interação Moderna e Fluida)
+   ========================================================================== */
+.page-home p {
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 700px; 
+  margin: 0;
+  
+  /* Efeito Glassmorphism (Mais evidente contra o novo fundo colorido) */
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  
+  border: 1px solid var(--glass-border);
+  border-radius: 0 24px 24px 0;
+  
+  border-left: 4px solid var(--accent-blue-light); 
+  padding: 2.5rem 3rem 2.5rem 2.5rem;
+  
+  box-shadow: 
+    0 24px 48px -12px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+    
+  /* Animação de entrada */
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: slideRightReveal 0.8s var(--ease-smooth) 0.15s forwards;
+  
+  /* Transições suaves */
+  transition: transform 0.4s var(--ease-smooth), 
+              box-shadow 0.4s var(--ease-smooth), 
+              border-color 0.4s ease, 
+              color 0.3s ease;
+  cursor: default;
+}
+
+/* EFEITO HOVER NO TEXTO: LIFT FLUIDO */
+.page-home p:hover {
+  transform: translateY(-6px); 
+  
+  box-shadow: 
+    0 32px 64px -12px rgba(15, 23, 42, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+    
+  /* Linha lateral fica com o azul escuro do título */
+  border-left-color: var(--accent-blue-dark); 
+  
+  /* Texto também fica com o azul do título */
+  color: var(--accent-blue-dark);
+}
+
+/* ==========================================================================
+   KEYFRAMES E MEDIA QUERIES
+   ========================================================================== */
+@keyframes slideRightReveal {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floatOrbs {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-30px, 40px) scale(1.05); }
+}
+
+@media (min-width: 768px) {
+  .page-home {
+    padding-top: 12rem;
+    padding-left: 5%; 
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-home {
+    padding-left: 10%; 
+  }
+}

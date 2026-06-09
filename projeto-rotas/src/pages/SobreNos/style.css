@@ -1,0 +1,185 @@
+/* ==========================================================================
+   PÁGINA SOBRE NÓS (ALINHAMENTO CENTRALIZADO & GRID SIMÉTRICO)
+   ========================================================================== */
+
+.page-sobre-nos {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza todos os elementos filhos */
+  text-align: center; /* Garante que o texto interno fique centralizado */
+  
+  min-height: 100vh;
+  padding: 8rem 1.5rem 4rem; 
+  position: relative;
+  z-index: 1;
+  max-width: 1200px; /* Reduzi um pouco para o texto centralizado não ficar muito longo */
+  margin: 0 auto;
+  
+  /* Textura Premium (Dot Grid) */
+  background-image: radial-gradient(rgba(15, 23, 42, 0.05) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+}
+
+/* ==========================================================================
+   AMBIENT GLOWS: CORES DE FUNDO
+   ========================================================================== */
+.page-sobre-nos::before,
+.page-sobre-nos::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+  animation: floatOrbs 15s ease-in-out infinite alternate;
+}
+
+.page-sobre-nos::before {
+  top: 10%;
+  left: 0%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 700px;
+  max-height: 700px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(6, 182, 212, 0.05) 70%);
+  filter: blur(100px);
+}
+
+.page-sobre-nos::after {
+  bottom: 5%;
+  right: 0%;
+  width: 60vw;
+  height: 60vw;
+  max-width: 800px;
+  max-height: 800px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(29, 78, 216, 0.05) 70%);
+  filter: blur(100px);
+  animation-delay: -5s;
+}
+
+/* ==========================================================================
+   TIPOGRAFIA: TÍTULO DA PÁGINA
+   ========================================================================== */
+.page-sobre-nos h1 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin: 0 0 1.5rem 0;
+  
+  color: var(--text-primary);
+  
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUpReveal 0.8s var(--ease-smooth) forwards;
+}
+
+/* ==========================================================================
+   INTRODUÇÃO (Parágrafo principal)
+   ========================================================================== */
+.page-sobre-nos p {
+  font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 750px;
+  margin: 0 auto 4rem auto; /* Margem auto nas laterais para garantir centralização */
+  
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUpReveal 0.8s var(--ease-smooth) 0.15s forwards;
+}
+
+/* ==========================================================================
+   LISTA DE CARDS (Os 4 itens)
+   ========================================================================== */
+.page-sobre-nos ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  
+  /* Grid moderno e responsivo */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* Media Query: Com 4 itens, forma um quadrado perfeito (2x2) no Desktop */
+@media (min-width: 768px) {
+  .page-sobre-nos ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ==========================================================================
+   ITENS DA LISTA: GLASSMORPHISM CARDS
+   ========================================================================== */
+.page-sobre-nos li {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  
+  /* O texto do card fica legal alinhado à esquerda para leitura, ou centralizado. Deixei à esquerda para melhor leitura. */
+  text-align: left; 
+  
+  border-top: 4px solid var(--accent-blue-light);
+  
+  box-shadow: 
+    0 12px 32px -8px rgba(15, 23, 42, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+    
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1rem;
+  
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUpReveal 0.8s var(--ease-smooth) forwards;
+  
+  transition: transform 0.4s var(--ease-smooth), 
+              box-shadow 0.4s var(--ease-smooth), 
+              border-color 0.4s ease;
+}
+
+/* Delays para os 4 cards aparecerem um de cada vez */
+.page-sobre-nos li:nth-child(1) { animation-delay: 0.25s; }
+.page-sobre-nos li:nth-child(2) { animation-delay: 0.35s; }
+.page-sobre-nos li:nth-child(3) { animation-delay: 0.45s; }
+.page-sobre-nos li:nth-child(4) { animation-delay: 0.55s; } /* Novo card adicionado */
+
+/* EFEITO HOVER NOS CARDS (Lift fluido) */
+.page-sobre-nos li:hover {
+  transform: translateY(-8px);
+  
+  box-shadow: 
+    0 32px 64px -12px rgba(15, 23, 42, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+    
+  border-top-color: var(--accent-blue-dark);
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   KEYFRAMES
+   ========================================================================== */
+@keyframes fadeUpReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Centralização nos desktops maiores (removemos aquele padding lateral assimétrico da versão antiga) */
+@media (min-width: 768px) {
+  .page-sobre-nos {
+    padding-top: 10rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

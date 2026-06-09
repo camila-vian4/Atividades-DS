@@ -1,0 +1,213 @@
+/* ==========================================================================
+   DESIGN SYSTEM: LIGHT PREMIUM (SAAS / CORPORATIVO)
+   ========================================================================== */
+:root {
+  /* Paleta Light Premium */
+  --bg-body: #f4f7f9; /* Fundo cinza/azulado super leve e elegante */
+  --text-primary: #0f172a; /* Slate 900 - Contraste forte para leitura */
+  --text-secondary: #475569; /* Slate 600 - Textos de apoio */
+  
+  /* Acentos Corporativos (Azul Confiança) */
+  --accent-blue-dark: #1d4ed8;
+  --accent-blue-light: #3b82f6;
+  --accent-glow: rgba(59, 130, 246, 0.15);
+  
+  /* Glassmorphism Cristalino */
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.08); /* Sombra elegante e difusa */
+  
+  /* Timing Functions */
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   RESET BÁSICO (Para visualização)
+   ========================================================================== */
+body {
+  background-color: var(--bg-body);
+  /* Brilho sutil no fundo para dar profundidade ao layout */
+  background-image: radial-gradient(circle at 50% 0%, rgba(255,255,255,1) 0%, transparent 60%);
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ==========================================================================
+   CABEÇALHO: FLOATING PILL (MOBILE FIRST)
+   ========================================================================== */
+header {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 1200px;
+  z-index: 1000;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border-radius: 24px;
+  
+  /* Efeito Glassmorphism Claro */
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  /* Bordas e Sombras */
+  border: 1px solid var(--glass-border);
+  box-shadow: 
+    var(--glass-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 1); /* Realce de luz no topo da borda */
+    
+  /* Animação de Entrada */
+  animation: revealHeader 1s var(--ease-smooth) forwards;
+  opacity: 0;
+}
+
+/* Borda prateada/azulada animada no hover geral do header */
+header::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #e2e8f0 0%, #bfdbfe 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-smooth);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+header:hover::before {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   LOGOTIPO: AUTORIDADE E SOFISTICAÇÃO
+   ========================================================================== */
+.header-logo {
+  text-decoration: none;
+  outline: none;
+  position: relative;
+}
+
+.header-logo h1 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+  
+  /* Texto com cor sólida premium (Sem Degradê) */
+  color: var(--text-primary);
+  
+  transition: all 0.3s var(--ease-spring);
+}
+
+.header-logo:hover h1 {
+  transform: scale(1.03);
+  color: var(--accent-blue-dark); /* Fica azul corporativo sutil ao passar o mouse */
+}
+
+/* ==========================================================================
+   NAVEGAÇÃO: ESTILO DOCK / PILL INTERNA
+   ========================================================================== */
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  
+  /* Fundo sutil para agrupar os links */
+  background: rgba(241, 245, 249, 0.6);
+  padding: 0.35rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.02);
+}
+
+header nav a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  color: var(--text-secondary);
+  padding: 0.6rem 1.25rem;
+  border-radius: 100px;
+  transition: all 0.3s var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Microinteração: Hover */
+header nav a:hover,
+header nav a:focus-visible {
+  color: var(--accent-blue-dark);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  transform: translateY(-1px);
+}
+
+/* Microinteração: Active State (Rota Atual) */
+header nav a.active {
+  color: var(--accent-blue-dark);
+  background: #ffffff;
+  box-shadow: 
+    0 4px 12px rgba(15, 23, 42, 0.06),
+    0 0 0 1px rgba(226, 232, 240, 0.8);
+}
+
+/* ==========================================================================
+   KEYFRAMES (ANIMAÇÕES)
+   ========================================================================== */
+@keyframes revealHeader {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -30px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (DESKTOP E ULTRAWIDE)
+   ========================================================================== */
+@media (min-width: 768px) {
+  header {
+    top: 1.5rem;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.75rem 1rem 0.75rem 2rem;
+    border-radius: 100px; /* Pílula perfeita em telas maiores */
+  }
+
+  .header-logo h1 {
+    font-size: 1.25rem;
+  }
+
+  header nav {
+    gap: 0.5rem;
+  }
+  
+  header nav a {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  header {
+    top: 2rem;
+    padding: 1rem 1.5rem 1rem 2.5rem;
+  }
+  .header-logo h1 {
+    font-size: 1.4rem;
+  }
+}
